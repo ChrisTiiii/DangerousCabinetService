@@ -1,61 +1,41 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/toolbar_container"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="查询危化品" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/dodgerblue">
+    <com.example.administrator.dangerouscabinetservice.widget.time.TimeView
+        android:id="@+id/time_view"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_300"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        custom:borderColor="#cccccc"
+        custom:borderWidth="3dp"
+        custom:centerPointColor="#000"
+        custom:centerPointRadiu="2dp"
+        custom:centerPointType="rect"
+        custom:circleBackground="#fffffa"
+        custom:hourPointerColor="#000"
+        custom:hourPointerLength="30dp"
+        custom:isSecondGoSmooth="false"
+        custom:maxScaleColor="#000"
+        custom:maxScaleLength="14dp"
+        custom:midScaleColor="#000"
+        custom:midScaleLength="10dp"
+        custom:minPointerColor="#000"
+        custom:minPointerLength="50dp"
+        custom:minScaleColor="#000"
+        custom:minScaleLength="6dp"
+        custom:secondPointerColor="#f00"
+        custom:secondPointerLength="80dp"
+        custom:textColor="#f00"
+        custom:textSize="24sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/img_search"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="0dp"
-                android:paddingLeft="8dp"
-                android:text="三棱危化品柜"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/img_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_action_action_search" />
-
-            <TextView
-                android:id="@+id/show_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/img_search"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="-66dp"
-                android:text="显示全部"
-                android:textColor="@color/white" />
-
-        </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
-
-    <com.example.administrator.dangerouscabinetservice.widget.MaterialSearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</FrameLayout>
-
-
+</RelativeLayout>

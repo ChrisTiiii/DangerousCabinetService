@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">危化品柜</string>
+    <string name="goods_id">编号</string>
+    <string name="goods_name">品名</string>
+    <string name="goods_use_weight">使用重量</string>
+    <string name="goods_now_weight">当前重量</string>
+    <string name="goods_back_date">归还时间</string>
+    <string name="goods_pickup_date">取出时间</string>
+    <string name="yes">确认</string>
+    <string name="re_pandian">重新盘点</string>
 </resources>

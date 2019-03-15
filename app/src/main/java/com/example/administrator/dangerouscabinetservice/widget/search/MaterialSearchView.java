@@ -1,4 +1,4 @@
-package com.example.administrator.dangerouscabinetservice.widget;
+package com.example.administrator.dangerouscabinetservice.widget.search;
 
 /**
  * Author: create by ZhongMing

@@ -1,4 +1,4 @@
-package com.example.administrator.dangerouscabinetservice;
+package com.example.administrator.dangerouscabinetservice.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,10 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.administrator.dangerouscabinetservice.R;
 import com.example.administrator.dangerouscabinetservice.adpter.GoodsAdapter;
 import com.example.administrator.dangerouscabinetservice.item.GoodsItem;
 import com.example.administrator.dangerouscabinetservice.net.NetImp;
-import com.example.administrator.dangerouscabinetservice.widget.MaterialSearchView;
+import com.example.administrator.dangerouscabinetservice.widget.search.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends Activity {
+public class GoodsActivity extends Activity {
 
     @BindView(R.id.search_view)
     MaterialSearchView searchView;
@@ -40,7 +41,7 @@ public class MainActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.goods_main);
         ButterKnife.bind(this);
         NetImp.getInstance().downLoad();
         initData();
@@ -55,7 +56,7 @@ public class MainActivity extends Activity {
         listData = new ArrayList<>();
         listName = new ArrayList<>();
         setData();
-        adapter = new GoodsAdapter(MainActivity.this, R.layout.goods_item, listData);
+        adapter = new GoodsAdapter(GoodsActivity.this, R.layout.goods_item, listData);
         recyclerview.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerview.setAdapter(adapter);
         searchView.setVoiceSearch(false); //or true,是否支持声音的
@@ -77,7 +78,7 @@ public class MainActivity extends Activity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(MainActivity.this, "点击的是：" + listData.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(GoodsActivity.this, "点击的是：" + listData.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
         //数据的监听（在自定义类中已经做了些处理）
@@ -87,7 +88,7 @@ public class MainActivity extends Activity {
             //2.点击系统键盘的搜索/回车后回调这个方法
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(MainActivity.this, "你要搜索的是：" + query, Toast.LENGTH_SHORT).show();
+                Toast.makeText(GoodsActivity.this, "你要搜索的是：" + query, Toast.LENGTH_SHORT).show();
                 listData.clear();
                 for (String temp : listName) {
                     if (temp.equals(query)) {
