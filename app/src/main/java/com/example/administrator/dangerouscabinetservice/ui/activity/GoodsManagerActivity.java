@@ -59,7 +59,9 @@ public class GoodsManagerActivity extends AppCompatActivity {
         setContentView(R.layout.goods_manage);
         ButterKnife.bind(this);
         initData();
+        initEvent();
     }
+
 
     private void initData() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -84,6 +86,9 @@ public class GoodsManagerActivity extends AppCompatActivity {
         snapHelperUp.attachToRecyclerView(recyclerUp);//只滑动一个item
         PagerSnapHelper snapHelperDown = new PagerSnapHelper();
         snapHelperDown.attachToRecyclerView(recyclerDown);
+    }
+
+    private void initEvent() {
         recyclerUp.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -93,8 +98,6 @@ public class GoodsManagerActivity extends AppCompatActivity {
                 pageNumUp.setText(upPosition + 1 + "/ " + list.size());
             }
         });
-
-
         recyclerDown.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -105,6 +108,7 @@ public class GoodsManagerActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @OnClick({R.id.btn_sure, R.id.btn_pandian})
     public void onViewClicked(View view) {
