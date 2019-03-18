@@ -41,13 +41,11 @@ public class GoodsActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.goods_main);
+        setContentView(R.layout.search_main);
         ButterKnife.bind(this);
-        NetImp.getInstance().downLoad();
         initData();
         initEvent();
     }
-
 
     /**
      * 初始化数据

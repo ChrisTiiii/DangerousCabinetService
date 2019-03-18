@@ -4,11 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <Button
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="查询危化品" />
+
+
+    <Button
+        android:id="@+id/btn_use"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search"
+        android:text="取出/归还" />
 
     <com.example.administrator.dangerouscabinetservice.widget.time.TimeView
         android:id="@+id/time_view"
