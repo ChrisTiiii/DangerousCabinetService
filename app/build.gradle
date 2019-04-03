@@ -18,6 +18,9 @@ android {
     }
 }
 
+//为了方便可使用 def 关键字定义版本号
+def dbFlow_version = "4.2.4"
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -52,5 +55,10 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
 
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    //数据库
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbFlow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbFlow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbFlow_version}"
 
 }

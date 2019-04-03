@@ -3,12 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.administrator.dangerouscabinetservice">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!--网络状态权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--要在清单文件中加上要申请的权限-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".MyApp"
@@ -28,6 +33,15 @@
             android:name=".ui.activity.GoodsActivity"
             android:theme="@style/BaseStyle" />
         <activity android:name=".ui.activity.GoodsManagerActivity" />
+
+        <!--注册广播-->
+        <receiver android:name=".broadcast.NetBroadcastReceiver">
+            <intent-filter>
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE"
+                    tools:ignore="BatteryLife" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

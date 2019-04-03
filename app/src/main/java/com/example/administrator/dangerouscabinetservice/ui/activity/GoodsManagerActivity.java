@@ -11,10 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.administrator.dangerouscabinetservice.MyApp;
 import com.example.administrator.dangerouscabinetservice.R;
 import com.example.administrator.dangerouscabinetservice.adpter.BackAdapter;
 import com.example.administrator.dangerouscabinetservice.adpter.PickupAdapter;
+import com.example.administrator.dangerouscabinetservice.db.UserRoot;
 import com.example.administrator.dangerouscabinetservice.item.GoodsUseDetailItem;
+import com.example.administrator.dangerouscabinetservice.ui.BaseActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +33,7 @@ import butterknife.OnClick;
  * Time: 2019/3/18 0018 09:20
  * Description: 物品取出 归还 管理确认界面
  */
-public class GoodsManagerActivity extends AppCompatActivity {
+public class GoodsManagerActivity extends BaseActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.recycler_up)
@@ -52,43 +55,32 @@ public class GoodsManagerActivity extends AppCompatActivity {
     static int upPosition = -1;
     static int downPosition = -1;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.goods_manage);
         ButterKnife.bind(this);
-        initData();
-        initEvent();
     }
 
+    @Override
+    protected int initLayout() {
+        return R.layout.goods_manage;
+    }
 
-    private void initData() {
+    protected void initData() {
+        String username = "";
+        for (UserRoot userRoot : MyApp.getUserList()) {
+            username += userRoot.getUserName() + ",";
+        }
+        tvTitle.setText(username + "您归还的盘点明细如下：");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             GoodsUseDetailItem goods = new GoodsUseDetailItem("00" + i, "这是第" + i + "个化学品", String.valueOf(i * 16), df.format(new Date()));
             list.add(goods);
         }
-        pcikAdapter = new PickupAdapter(R.layout.pickup_item, list);
-        backAdapter = new BackAdapter(R.layout.back_goods_item, list);
-        LinearLayoutManager linearLayoutManagerUp = new LinearLayoutManager(this);
-        linearLayoutManagerUp.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerUp.setLayoutManager(linearLayoutManagerUp);
-        LinearLayoutManager linearLayoutManagerDown = new LinearLayoutManager(this);
-        linearLayoutManagerDown.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerDown.setLayoutManager(linearLayoutManagerDown);
-        pcikAdapter.openLoadAnimation();
-        backAdapter.openLoadAnimation();
-        recyclerUp.setAdapter(pcikAdapter);
-        recyclerDown.setAdapter(backAdapter);
-        PagerSnapHelper snapHelperUp = new PagerSnapHelper();
-        snapHelperUp.attachToRecyclerView(recyclerUp);//只滑动一个item
-        PagerSnapHelper snapHelperDown = new PagerSnapHelper();
-        snapHelperDown.attachToRecyclerView(recyclerDown);
     }
 
-    private void initEvent() {
+    protected void initEvent() {
         recyclerUp.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -109,6 +101,25 @@ public class GoodsManagerActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void initView() {
+        pcikAdapter = new PickupAdapter(R.layout.pickup_item, list);
+        backAdapter = new BackAdapter(R.layout.back_goods_item, list);
+        LinearLayoutManager linearLayoutManagerUp = new LinearLayoutManager(this);
+        linearLayoutManagerUp.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerUp.setLayoutManager(linearLayoutManagerUp);
+        LinearLayoutManager linearLayoutManagerDown = new LinearLayoutManager(this);
+        linearLayoutManagerDown.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerDown.setLayoutManager(linearLayoutManagerDown);
+        pcikAdapter.openLoadAnimation();
+        backAdapter.openLoadAnimation();
+        recyclerUp.setAdapter(pcikAdapter);
+        recyclerDown.setAdapter(backAdapter);
+        PagerSnapHelper snapHelperUp = new PagerSnapHelper();
+        snapHelperUp.attachToRecyclerView(recyclerUp);//只滑动一个item
+        PagerSnapHelper snapHelperDown = new PagerSnapHelper();
+        snapHelperDown.attachToRecyclerView(recyclerDown);
+    }
 
     @OnClick({R.id.btn_sure, R.id.btn_pandian})
     public void onViewClicked(View view) {

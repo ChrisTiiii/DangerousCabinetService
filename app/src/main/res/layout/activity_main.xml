@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:text="查询危化品" />
 
-
     <Button
         android:id="@+id/btn_use"
         android:layout_width="match_parent"
@@ -46,5 +45,30 @@
         custom:secondPointerLength="80dp"
         custom:textColor="#f00"
         custom:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time_view">
+
+        <CheckBox
+            android:id="@+id/check1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <CheckBox
+            android:id="@+id/check2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <CheckBox
+            android:id="@+id/check3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 
 </RelativeLayout>
