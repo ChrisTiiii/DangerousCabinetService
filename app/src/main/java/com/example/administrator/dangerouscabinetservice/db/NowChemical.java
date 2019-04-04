@@ -22,11 +22,13 @@ public class NowChemical extends BaseModel {
     @Column
     private String chemicalName;//化学品名称
     @Column
-    private String remain;//剩余容量
+    private String weight;//当前重量
     @Column
     private String cabinetID;//柜体ID
     @Column
     private int status;//状态 -1 空 1在柜内 2被取出
+    @Column
+    private String cheDescription;//化学品描述
 
     public int getId() {
         return id;
@@ -60,12 +62,12 @@ public class NowChemical extends BaseModel {
         this.chemicalName = chemicalName;
     }
 
-    public String getRemain() {
-        return remain;
+    public String getWeight() {
+        return weight;
     }
 
-    public void setRemain(String remain) {
-        this.remain = remain;
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
     public String getCabinetID() {
@@ -82,5 +84,13 @@ public class NowChemical extends BaseModel {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getCheDescription() {
+        return cheDescription;
+    }
+
+    public void setCheDescription(String cheDescription) {
+        this.cheDescription = cheDescription;
     }
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dp_18">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="试剂 RFID:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_rfid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="XXX"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_top"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="化学名称:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="XXX"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_up"
+        android:paddingTop="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tt_bh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="化学编号:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_bh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tt_bh"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="JSDHSDSHJ"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_mid"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tt_sy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剩余容量:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tt_sy"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="sdjksj"
+            android:textColor="@color/crimson" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_down"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="化学详情:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_desciption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_8"
+            android:text="XXXXXXXXXXXXXXX"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -42,6 +42,10 @@ public class MyApp extends Application {
         return userList;
     }
 
+    public static void setEmptyUserList() {
+        setUserList(null);
+    }
+
     public static void setUserList(List<UserRoot> userList) {
         MyApp.userList = userList;
     }

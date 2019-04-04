@@ -12,7 +12,6 @@ import com.raizlabs.android.dbflow.structure.database.transaction.ITransaction;
 import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Author: create by ZhongMing
@@ -84,7 +83,7 @@ public class DBManager {
     public void inChemical(String RFID, int status, String weight) {
         SQLite.update(NowChemical.class)
                 .set(NowChemical_Table.status.eq(status),
-                        NowChemical_Table.remain.eq(weight))
+                        NowChemical_Table.weight.eq(weight))
                 .where(NowChemical_Table.RFID.is(RFID))
                 .async()
                 .execute();
@@ -107,7 +106,17 @@ public class DBManager {
      * @return
      */
     public List<NowChemical> queryNowChemicals() {
-        List<NowChemical> list = SQLite.select().from(NowChemical.class).queryList();
+        List<NowChemical> list = SQLite.select().from(NowChemical.class).where(NowChemical_Table.status.is(1)).queryList();
+        return list;
+    }
+
+    /**
+     * 模糊查询当前柜内数据
+     *
+     * @return
+     */
+    public List<NowChemical> likeNowChemicals(String name) {
+        List<NowChemical> list = SQLite.select().from(NowChemical.class).where(NowChemical_Table.status.is(1)).and(NowChemical_Table.chemicalName.like(name + "%")).queryList();
         return list;
     }
 
@@ -166,6 +175,30 @@ public class DBManager {
             @Override
             public void execute(DatabaseWrapper databaseWrapper) {
                 for (BaseChemical model : list) {
+                    model.save(databaseWrapper);
+                }
+            }
+        }).success(new Transaction.Success() {
+            @Override
+            public void onSuccess(@NonNull Transaction transaction) {
+                Log.i(TAG, "on success");
+            }
+        }).error(new Transaction.Error() {
+            @Override
+            public void onError(@NonNull Transaction transaction, @NonNull Throwable error) {
+                Log.i(TAG, error.getMessage());
+            }
+        }).build().execute();
+    }
+
+    /**
+     * 事务批量操作当前滑雪裤表
+     */
+    public void insertNowChemicals(final List<NowChemical> list) {
+        FlowManager.getDatabase(MyDatabase.class).beginTransactionAsync(new ITransaction() {
+            @Override
+            public void execute(DatabaseWrapper databaseWrapper) {
+                for (NowChemical model : list) {
                     model.save(databaseWrapper);
                 }
             }

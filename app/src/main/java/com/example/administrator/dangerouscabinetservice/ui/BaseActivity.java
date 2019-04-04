@@ -48,12 +48,9 @@ public abstract class BaseActivity extends AppCompatActivity implements NetBroad
     }
 
     protected abstract int initLayout();//加载xml布局
-
-    protected abstract void initEvent();//加载事件
-
-    protected abstract void initView();//加载界面
-
     protected abstract void initData();//加载数据
+    protected abstract void initView();//加载界面
+    protected abstract void initEvent();//加载事件
 
 
     /**

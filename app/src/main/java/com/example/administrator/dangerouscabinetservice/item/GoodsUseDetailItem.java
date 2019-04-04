@@ -11,6 +11,9 @@ public class GoodsUseDetailItem {
     private String goodsWeight;
     private String goodsTime;
 
+    public GoodsUseDetailItem() {
+    }
+
     public GoodsUseDetailItem(String goodsId, String goodsName, String goodsWeight, String goodsTime) {
         this.goodsId = goodsId;
         this.goodsName = goodsName;

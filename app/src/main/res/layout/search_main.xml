@@ -11,16 +11,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/dodgerblue">
+            android:background="@color/steelblue">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/dp_8"
+                android:src="@drawable/back" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/img_search"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@+id/img_back"
                 android:paddingLeft="8dp"
-                android:text="三棱危化品柜"
+                android:text="三棱化学品查询"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -47,7 +54,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

@@ -5,70 +5,102 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/search"
+    <RelativeLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="查询危化品" />
+        android:layout_height="50dp"
+        android:background="@color/steelblue">
 
-    <Button
-        android:id="@+id/btn_use"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search"
-        android:text="取出/归还" />
-
-    <com.example.administrator.dangerouscabinetservice.widget.time.TimeView
-        android:id="@+id/time_view"
-        android:layout_width="@dimen/dp_300"
-        android:layout_height="@dimen/dp_300"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center_horizontal"
-        custom:borderColor="#cccccc"
-        custom:borderWidth="3dp"
-        custom:centerPointColor="#000"
-        custom:centerPointRadiu="2dp"
-        custom:centerPointType="rect"
-        custom:circleBackground="#fffffa"
-        custom:hourPointerColor="#000"
-        custom:hourPointerLength="30dp"
-        custom:isSecondGoSmooth="false"
-        custom:maxScaleColor="#000"
-        custom:maxScaleLength="14dp"
-        custom:midScaleColor="#000"
-        custom:midScaleLength="10dp"
-        custom:minPointerColor="#000"
-        custom:minPointerLength="50dp"
-        custom:minScaleColor="#000"
-        custom:minScaleLength="6dp"
-        custom:secondPointerColor="#f00"
-        custom:secondPointerLength="80dp"
-        custom:textColor="#f00"
-        custom:textSize="24sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_view">
-
-        <CheckBox
-            android:id="@+id/check1"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_alignTop="@+id/img_search"
+            android:layout_centerVertical="true"
+            android:paddingLeft="8dp"
+            android:text="三棱化学品柜管理"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-        <CheckBox
-            android:id="@+id/check2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    </RelativeLayout>
 
-        <CheckBox
-            android:id="@+id/check3"
-            android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll">
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+            android:text="查询危化品" />
+
+        <Button
+            android:id="@+id/btn_use"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search"
+            android:text="取出/归还" />
+
+        <Button
+            android:id="@+id/btn_shuaka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_use"
+            android:text="模拟刷卡" />
+
+        <com.example.administrator.dangerouscabinetservice.widget.time.TimeView
+            android:id="@+id/time_view"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_300"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            custom:borderColor="#cccccc"
+            custom:borderWidth="3dp"
+            custom:centerPointColor="#000"
+            custom:centerPointRadiu="2dp"
+            custom:centerPointType="rect"
+            custom:circleBackground="#fffffa"
+            custom:hourPointerColor="#000"
+            custom:hourPointerLength="30dp"
+            custom:isSecondGoSmooth="false"
+            custom:maxScaleColor="#000"
+            custom:maxScaleLength="14dp"
+            custom:midScaleColor="#000"
+            custom:midScaleLength="10dp"
+            custom:minPointerColor="#000"
+            custom:minPointerLength="50dp"
+            custom:minScaleColor="#000"
+            custom:minScaleLength="6dp"
+            custom:secondPointerColor="#f00"
+            custom:secondPointerLength="80dp"
+            custom:textColor="#f00"
+            custom:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time_view">
+
+            <CheckBox
+                android:id="@+id/check1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/check2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/check3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

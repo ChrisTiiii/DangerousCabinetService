@@ -24,7 +24,7 @@ public class RecordTable extends BaseModel {
     @Column
     private String inRFID;//存入
     @Column
-    private String weight;//重量
+    private String weight;//当前重量
     @Column
     private String first_userId;//用户1
     @Column

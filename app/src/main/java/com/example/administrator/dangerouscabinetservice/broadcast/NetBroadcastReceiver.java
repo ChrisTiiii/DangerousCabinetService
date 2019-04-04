@@ -22,10 +22,6 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
             // 接口回调传过去状态的类型
             if (BaseActivity.netEvent != null)
                 BaseActivity.netEvent.onNetChange(netWorkState);
-//            if (BaseFragment.netEvent != null)
-//                BaseFragment.netEvent.onNetChange(netWorkState);
-//            if (BaseFragmentActivity.netEvent != null)
-//                BaseFragmentActivity.netEvent.onNetChange(netWorkState);
         }
     }
 

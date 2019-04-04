@@ -22,9 +22,11 @@ public class BaseChemical extends BaseModel {
     @Column
     private String chemicalName;//化学品名称
     @Column
-    private String total;//整体容量
+    private String weight;//整体重量
     @Column
     private String cabinetID;//柜体ID
+    @Column
+    private String cheDescription;//化学品描述
 
     public int getId() {
         return id;
@@ -58,12 +60,12 @@ public class BaseChemical extends BaseModel {
         this.RFID = RFID;
     }
 
-    public String getTotal() {
-        return total;
+    public String getWeight() {
+        return weight;
     }
 
-    public void setTotal(String total) {
-        this.total = total;
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
     public String getCabinetID() {
@@ -72,5 +74,13 @@ public class BaseChemical extends BaseModel {
 
     public void setCabinetID(String cabinetID) {
         this.cabinetID = cabinetID;
+    }
+
+    public String getCheDescription() {
+        return cheDescription;
+    }
+
+    public void setCheDescription(String cheDescription) {
+        this.cheDescription = cheDescription;
     }
 }

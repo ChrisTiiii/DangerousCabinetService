@@ -56,6 +56,10 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:3.7.0'
 
+    //dialog
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation 'cn.carbs.android:MDDialog:1.0.0'
+
     //数据库
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbFlow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbFlow_version}"

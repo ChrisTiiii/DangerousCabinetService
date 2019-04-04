@@ -29,11 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.GoodsActivity"
-            android:theme="@style/BaseStyle" />
+        <activity android:name=".ui.activity.GoodsActivity" />
         <activity android:name=".ui.activity.GoodsManagerActivity" />
-
+        <activity android:name=".ui.activity.ChooseActivity" />
+        <activity android:name=".ui.activity.WeightActivity" />
         <!--注册广播-->
         <receiver android:name=".broadcast.NetBroadcastReceiver">
             <intent-filter>
