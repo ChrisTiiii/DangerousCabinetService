@@ -22,7 +22,7 @@ public class BaseChemical extends BaseModel {
     @Column
     private String chemicalName;//化学品名称
     @Column
-    private String weight;//整体重量
+    private String weight;//整体重量 g
     @Column
     private String cabinetID;//柜体ID
     @Column

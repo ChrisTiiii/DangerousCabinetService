@@ -1,11 +1,15 @@
 package com.example.administrator.dangerouscabinetservice.ui;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.dangerouscabinetservice.MyApp;
@@ -18,10 +22,10 @@ import com.example.administrator.dangerouscabinetservice.ui.activity.ChooseActiv
 import com.example.administrator.dangerouscabinetservice.ui.activity.GoodsActivity;
 import com.example.administrator.dangerouscabinetservice.ui.activity.GoodsManagerActivity;
 import com.example.administrator.dangerouscabinetservice.utils.ActivityUtil;
-import com.example.administrator.dangerouscabinetservice.widget.time.TimeView;
+import com.example.administrator.dangerouscabinetservice.widget.thermometer.HumidityView;
+import com.example.administrator.dangerouscabinetservice.widget.thermometer.ThermometerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -34,8 +38,6 @@ import butterknife.OnClick;
  * Description:
  */
 public class MainActivity extends BaseActivity {
-    @BindView(R.id.time_view)
-    TimeView timeView;
     @BindView(R.id.search)
     Button search;
     @BindView(R.id.btn_use)
@@ -48,6 +50,20 @@ public class MainActivity extends BaseActivity {
     CheckBox check3;
     @BindView(R.id.btn_shuaka)
     Button btnShuaka;
+    @BindView(R.id.text_temp)
+    TextView textTemp;
+    @BindView(R.id.text_humid)
+    TextView textHumid;
+    @BindView(R.id.tv_temp)
+    ThermometerView tvTemp;
+    @BindView(R.id.tv_humidity)
+    HumidityView tvHumidity;
+    // 设置返回按钮的监听事件
+    private long exitTime = 0;
+
+    private Handler handler;
+    private static final int TIMER = 0x12334;
+
     private List<UserRoot> userList;//用户权限
     private List<UserRoot> tempUserList;//验证临时用户权限
     private List<BaseChemical> chemicalList;//基本化学库
@@ -62,14 +78,27 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        long time = System.currentTimeMillis();
-        final Calendar mCalendar = Calendar.getInstance();
-        mCalendar.setTimeInMillis(time);
-        int mHour = mCalendar.get(Calendar.HOUR);
-        int mMinuts = mCalendar.get(Calendar.MINUTE);
-        int mSeconds = mCalendar.get(Calendar.SECOND);
-        timeView.setTime(mHour, mMinuts, mSeconds);
-        timeView.start();
+        autoChange();
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    //去执行定时操作逻辑
+                    case TIMER:
+                        float temp = getRandomTemp();
+                        textTemp.setText(String.valueOf(temp) + "℃");
+                        tvTemp.setValueAndStartAnim(temp);
+                        float humidty = getRandomHumidy();
+                        textHumid.setText(String.valueOf(humidty) + "RH%");
+                        tvHumidity.setValueAndStartAnim(humidty);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
     }
 
     @Override
@@ -83,7 +112,34 @@ public class MainActivity extends BaseActivity {
         DBManager.getInstance().deleteTable(30);//删除柜内数据表
         DBManager.getInstance().deleteTable(40);//删除台账数据表
         makeData();
+    }
 
+    public void autoChange() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(2000);
+                        handler.sendEmptyMessage(TIMER);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private float getRandomTemp() {
+        float value = (int) (0 + Math.random() * 70 - 0 + 1);
+        Log.i("tempControl", "current value: " + value);
+        return value;
+    }
+
+    private float getRandomHumidy() {
+        float value = (int) (0 + Math.random() * (100 - 0 + 1));
+        Log.i("HumidyControl", "current value: " + value);
+        return value;
     }
 
     private void makeData() {
@@ -171,10 +227,6 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
-//        // 判断权限
-//        if (!hasPermission(Manifest.permission.READ_PHONE_STATE)) {
-//            requestPermission(ConstantUtil.PERMISSIONS_REQUEST_READ_PHONE_STATE, Manifest.permission.READ_PHONE_STATE);
-//        }
     }
 
 
@@ -186,8 +238,6 @@ public class MainActivity extends BaseActivity {
         Toast.makeText(this, netWorkState ? "当前网络可用" : "当前无网络", Toast.LENGTH_SHORT).show();
     }
 
-    // 设置返回按钮的监听事件
-    private long exitTime = 0;
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // 监听返回键，点击两次退出程序

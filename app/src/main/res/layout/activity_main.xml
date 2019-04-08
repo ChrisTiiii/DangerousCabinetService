@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
 
 
     <RelativeLayout
@@ -24,10 +26,11 @@
     </RelativeLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ll">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/search"
@@ -49,38 +52,11 @@
             android:layout_below="@+id/btn_use"
             android:text="模拟刷卡" />
 
-        <com.example.administrator.dangerouscabinetservice.widget.time.TimeView
-            android:id="@+id/time_view"
-            android:layout_width="@dimen/dp_300"
-            android:layout_height="@dimen/dp_300"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            custom:borderColor="#cccccc"
-            custom:borderWidth="3dp"
-            custom:centerPointColor="#000"
-            custom:centerPointRadiu="2dp"
-            custom:centerPointType="rect"
-            custom:circleBackground="#fffffa"
-            custom:hourPointerColor="#000"
-            custom:hourPointerLength="30dp"
-            custom:isSecondGoSmooth="false"
-            custom:maxScaleColor="#000"
-            custom:maxScaleLength="14dp"
-            custom:midScaleColor="#000"
-            custom:midScaleLength="10dp"
-            custom:minPointerColor="#000"
-            custom:minPointerLength="50dp"
-            custom:minScaleColor="#000"
-            custom:minScaleLength="6dp"
-            custom:secondPointerColor="#f00"
-            custom:secondPointerLength="80dp"
-            custom:textColor="#f00"
-            custom:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/time_view">
+            android:layout_below="@+id/rl_temp">
 
             <CheckBox
                 android:id="@+id/check1"
@@ -100,7 +76,88 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="当前温度:" />
+
+            <TextView
+                android:id="@+id/text_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/red"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="当前湿度:" />
+
+            <TextView
+                android:id="@+id/text_humid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/red"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <com.example.administrator.dangerouscabinetservice.widget.thermometer.ThermometerView
+            android:id="@+id/tv_temp"
+            android:layout_width="280dp"
+            android:layout_height="500dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="30dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            app:maxScaleValue="35dp"
+            app:midLineWidth="0dp"
+            app:minLineWidth="0dp"
+            app:minScaleValue="0dp" />
+
+        <com.example.administrator.dangerouscabinetservice.widget.thermometer.HumidityView
+            android:id="@+id/tv_humidity"
+            android:layout_width="280dp"
+            android:layout_height="500dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            app:maxScaleValue="52dp"
+            app:midLineWidth="0dp"
+            app:minLineWidth="0dp"
+            app:minScaleValue="2dp" />
+
     </RelativeLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

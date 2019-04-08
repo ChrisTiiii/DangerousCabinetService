@@ -14,31 +14,59 @@
     </declare-styleable>
 
     <declare-styleable name="TimeView">
-        <attr name="borderWidth" format="dimension"/>
-        <attr name="borderColor" format="color"/>
-        <attr name="circleBackground" format="color"/>
-        <attr name="minScaleColor" format="color"/>
-        <attr name="midScaleColor" format="color"/>
-        <attr name="maxScaleColor" format="color"/>
-        <attr name="minScaleLength" format="dimension"/>
-        <attr name="midScaleLength" format="dimension"/>
-        <attr name="maxScaleLength" format="dimension"/>
-        <attr name="textColor" format="color"/>
-        <attr name="textSize" format="dimension"/>
-        <attr name="isDrawText" format="boolean"/>
-        <attr name="secondPointerColor" format="color"/>
-        <attr name="minPointerColor" format="color"/>
-        <attr name="hourPointerColor" format="color"/>
-        <attr name="secondPointerLength" format="dimension"/>
-        <attr name="minPointerLength" format="dimension"/>
-        <attr name="hourPointerLength" format="dimension"/>
-        <attr name="secondPointerSize" format="dimension"/>
-        <attr name="minPointerSize" format="dimension"/>
-        <attr name="hourPointerSize" format="dimension"/>
-        <attr name="centerPointColor" format="color"/>
-        <attr name="centerPointSize" format="dimension"/>
-        <attr name="centerPointRadiu" format="dimension"/>
-        <attr name="centerPointType" format="string"/>
-        <attr name="isSecondGoSmooth" format="boolean"/>
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="circleBackground" format="color" />
+        <attr name="minScaleColor" format="color" />
+        <attr name="midScaleColor" format="color" />
+        <attr name="maxScaleColor" format="color" />
+        <attr name="minScaleLength" format="dimension" />
+        <attr name="midScaleLength" format="dimension" />
+        <attr name="maxScaleLength" format="dimension" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="isDrawText" format="boolean" />
+        <attr name="secondPointerColor" format="color" />
+        <attr name="minPointerColor" format="color" />
+        <attr name="hourPointerColor" format="color" />
+        <attr name="secondPointerLength" format="dimension" />
+        <attr name="minPointerLength" format="dimension" />
+        <attr name="hourPointerLength" format="dimension" />
+        <attr name="secondPointerSize" format="dimension" />
+        <attr name="minPointerSize" format="dimension" />
+        <attr name="hourPointerSize" format="dimension" />
+        <attr name="centerPointColor" format="color" />
+        <attr name="centerPointSize" format="dimension" />
+        <attr name="centerPointRadiu" format="dimension" />
+        <attr name="centerPointType" format="string" />
+        <attr name="isSecondGoSmooth" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="ThermometerView">
+        <attr name="viewBg" format="color|reference" /> <!-- 背景颜色 -->
+        <attr name="unitTextSize" format="dimension" /> <!-- 单位文字大小 -->
+        <attr name="unitTextColor" format="color|reference" /> <!-- 单位文字颜色 -->
+        <attr name="scaleTextSize" format="dimension" /> <!-- 刻度值文字大小 -->
+        <attr name="scaleTextColor" format="color|reference" /> <!-- 刻度值文字颜色 -->
+        <attr name="maxScaleLineColor" format="color|reference" /> <!-- 长刻度颜色 -->
+        <attr name="midScaleLineColor" format="color|reference" /> <!-- 中等刻度颜色 -->
+        <attr name="minScaleLineColor" format="color|reference" /> <!-- 短刻度颜色 -->
+        <attr name="scaleLineWidth" format="dimension" /> <!-- 刻度线宽 -->
+        <attr name="maxLineWidth" format="dimension" /> <!-- 长刻度长 -->
+        <attr name="midLineWidth" format="dimension" /> <!-- 中等刻度长 -->
+        <attr name="minLineWidth" format="dimension" /> <!-- 短刻度长 -->
+        <attr name="spaceScaleWidth" format="dimension" /> <!-- 刻度离温度计距离、刻度离文字距离 -->
+        <attr name="thermometerBg" format="color|reference" /> <!-- 温度计颜色 -->
+        <attr name="thermometerShadowBg" format="color|reference" /> <!-- 温度计阴影颜色 -->
+        <attr name="maxThermometerRadius" format="dimension" /> <!-- 温度计底部半径 -->
+        <attr name="minThermometerRadius" format="dimension" /> <!-- 温度计顶部半径 -->
+        <attr name="maxMercuryRadius" format="dimension" /> <!-- 水银底部半径 -->
+        <attr name="minMercuryRadius" format="dimension" /> <!-- 水银顶部半径 -->
+        <attr name="leftMercuryBg" format="color|reference" /> <!-- 左边水银背景颜色 -->
+        <attr name="rightMercuryBg" format="color|reference" /> <!-- 右边水银背景颜色 -->
+        <attr name="leftMercuryColor" format="color|reference" /> <!-- 左边水银颜色 -->
+        <attr name="rightMercuryColor" format="color|reference" /> <!-- 右边水银颜色 -->
+        <attr name="maxScaleValue" format="dimension" /> <!-- 温度计最大值 -->
+        <attr name="minScaleValue" format="dimension" /> <!-- 温度计最小值 -->
+        <attr name="curScaleValue" format="dimension" /> <!-- 当前刻度值 -->
     </declare-styleable>
 </resources>
