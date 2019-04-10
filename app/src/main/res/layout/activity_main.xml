@@ -38,18 +38,11 @@
             android:layout_height="wrap_content"
             android:text="查询危化品" />
 
-        <Button
-            android:id="@+id/btn_use"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/search"
-            android:text="取出/归还" />
 
         <Button
             android:id="@+id/btn_shuaka"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_use"
             android:text="模拟刷卡" />
 
 

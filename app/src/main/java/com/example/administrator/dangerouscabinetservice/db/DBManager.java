@@ -65,7 +65,7 @@ public class DBManager {
      * @param RFID
      * @param status
      */
-    public void offChemical(String RFID, int status) {
+    public void updateOffChemical(String RFID, int status) {
         SQLite.update(NowChemical.class)
                 .set(NowChemical_Table.status.eq(status))
                 .where(NowChemical_Table.RFID.is(RFID))
@@ -80,7 +80,7 @@ public class DBManager {
      * @param status
      * @param weight
      */
-    public void inChemical(String RFID, int status, String weight) {
+    public void updateInChemical(String RFID, int status, String weight) {
         SQLite.update(NowChemical.class)
                 .set(NowChemical_Table.status.eq(status),
                         NowChemical_Table.weight.eq(weight))
@@ -108,6 +108,18 @@ public class DBManager {
     public List<NowChemical> queryNowChemicals() {
         List<NowChemical> list = SQLite.select().from(NowChemical.class).where(NowChemical_Table.status.is(1)).queryList();
         return list;
+    }
+
+
+    /**
+     * 根据rfid查询未还物资
+     *
+     * @param rfid
+     * @return
+     */
+    public NowChemical queryNowChemicalsByRFID(String rfid) {
+        NowChemical nowChemical = SQLite.select().from(NowChemical.class).where(NowChemical_Table.status.is(2)).and(NowChemical_Table.RFID.is(rfid)).querySingle();
+        return nowChemical;
     }
 
     /**

@@ -23,6 +23,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 化学品查询界面
+ */
 public class GoodsActivity extends BaseActivity {
 
     @BindView(R.id.search_view)
@@ -92,6 +95,7 @@ public class GoodsActivity extends BaseActivity {
                 adapter.notifyDataSetChanged();
                 return false;
             }
+
             //文本内容发生改变时
             @Override
             public boolean onQueryTextChange(String newText) {

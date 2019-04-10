@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity implements NetBroadcastReceiver.NetChangeListener {
     public static NetBroadcastReceiver.NetChangeListener netEvent;// 网络状态改变监听事件
     /***获取TAG的activity名称**/
-    protected final String TAG = this.getClass().getSimpleName();
+    protected final String TAG = "TAG";// this.getClass().getSimpleName()
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,8 +48,11 @@ public abstract class BaseActivity extends AppCompatActivity implements NetBroad
     }
 
     protected abstract int initLayout();//加载xml布局
+
     protected abstract void initData();//加载数据
+
     protected abstract void initView();//加载界面
+
     protected abstract void initEvent();//加载事件
 
 

@@ -14,6 +14,8 @@ import com.example.administrator.dangerouscabinetservice.MyApp;
 import com.example.administrator.dangerouscabinetservice.R;
 import com.example.administrator.dangerouscabinetservice.adpter.BackAdapter;
 import com.example.administrator.dangerouscabinetservice.adpter.PickupAdapter;
+import com.example.administrator.dangerouscabinetservice.db.DBManager;
+import com.example.administrator.dangerouscabinetservice.db.NowChemical;
 import com.example.administrator.dangerouscabinetservice.db.UserRoot;
 import com.example.administrator.dangerouscabinetservice.item.GoodsUseDetailItem;
 import com.example.administrator.dangerouscabinetservice.ui.BaseActivity;
@@ -56,6 +58,8 @@ public class GoodsManagerActivity extends BaseActivity {
     private BackAdapter backAdapter;
     private List<GoodsUseDetailItem> list;
     private List<GoodsUseDetailItem> emptyList;
+    private List<NowChemical> chemicalList;//取出使用假数据
+    private List<NowChemical> nowList;//页面展示
     static int upPosition = -1;
     static int downPosition = -1;
     private int type = -1;//1为取出 2为归还
@@ -71,19 +75,41 @@ public class GoodsManagerActivity extends BaseActivity {
     }
 
     protected void initData() {
+        list = new ArrayList<>();
+        emptyList = new ArrayList<>();
+        chemicalList = new ArrayList<>();
+        nowList = new ArrayList<>();
+
         Bundle bundle = getIntent().getExtras();
         type = bundle.getInt("type");
         for (UserRoot userRoot : MyApp.getUserList()) {
             username += userRoot.getUserName() + ",";
         }
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-        list = new ArrayList<>();
-        emptyList = new ArrayList<>();
-        emptyList.add(new GoodsUseDetailItem());
+        makeData();
 
-        for (int i = 0; i < 10; i++) {
-            GoodsUseDetailItem goods = new GoodsUseDetailItem("00" + i, "这是第" + i + "个化学品", String.valueOf(i * 16), df.format(new Date()));
-            list.add(goods);
+    }
+
+    private void makeData() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        emptyList.add(new GoodsUseDetailItem());
+        switch (type) {
+            case 1:
+                chemicalList = DBManager.getInstance().queryNowChemicals();
+                for (int i = 0; i < 3; i++) {
+                    nowList.add(chemicalList.get((int) (0 + Math.random() * (chemicalList.size() - 1) - 0 + 1)));
+                }
+                for (NowChemical nowChemical : nowList) {
+                    list.add(new GoodsUseDetailItem(nowChemical.getRFID(), nowChemical.getChemicalName(), nowChemical.getWeight(), df.format(new Date())));
+                }
+                break;
+            case 2:
+                for (String rfid : MyApp.getOffList()) {
+                    nowList.add(DBManager.getInstance().queryNowChemicalsByRFID(rfid));
+                }
+                for (NowChemical nowChemical : nowList) {
+                    list.add(new GoodsUseDetailItem(nowChemical.getRFID(), nowChemical.getChemicalName(), nowChemical.getWeight(), df.format(new Date())));
+                }
+                break;
         }
 
 
@@ -167,8 +193,23 @@ public class GoodsManagerActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_sure:
+                switch (type) {
+                    case 1:
+                        List<String> rfid = new ArrayList<>();
+                        for (NowChemical now : nowList) {
+                            DBManager.getInstance().updateOffChemical(now.getRFID(), 2);
+                            rfid.add(now.getRFID());
+                        }
+                        MyApp.setOffList(rfid);
+                        break;
+                    case 2:
+                        for (NowChemical now : nowList)
+                            DBManager.getInstance().updateInChemical(now.getRFID(), 1, "1000000");
+                        break;
+                }
+
                 startActivity(MainActivity.class);
-                MyApp.setEmptyUserList();
+                MyApp.setEmptyTempUserList();
                 break;
             case R.id.btn_pandian:
                 break;

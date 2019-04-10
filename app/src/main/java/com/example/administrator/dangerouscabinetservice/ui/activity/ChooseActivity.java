@@ -67,7 +67,7 @@ public class ChooseActivity extends BaseActivity {
                 break;
             case R.id.btn_chanel:
                 startActivity(MainActivity.class);
-                MyApp.setEmptyUserList();
+                MyApp.setEmptyTempUserList();
                 break;
         }
     }

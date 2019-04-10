@@ -64,7 +64,7 @@ public class WeightActivity extends BaseActivity {
                 break;
             case R.id.back:
                 startActivity(MainActivity.class);
-                MyApp.setEmptyUserList();
+                MyApp.setEmptyTempUserList();
                 break;
         }
     }
